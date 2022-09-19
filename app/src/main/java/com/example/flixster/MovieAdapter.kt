@@ -1,6 +1,7 @@
 package com.example.flixster
 
 import android.content.Context
+import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,15 +33,26 @@ class MovieAdapter(private val context: Context, private val movies: List<Movie>
         private val ivPoster = itemView.findViewById<ImageView>(R.id.ivPoster)
         private val tvTitle = itemView.findViewById<TextView>(R.id.tvTitle)
         private val tvOverview = itemView.findViewById<TextView>(R.id.tvOverview)
+        private val ivBackdrop = itemView.findViewById<ImageView>(R.id.ivBackdrop)
 
         fun bind(movie: Movie) {
             tvTitle.text = movie.title
             tvOverview.text = movie.overview
-            Glide
-                .with(context)
-                .load(movie.posterImageUrl)
-                .placeholder(R.drawable.camera)
-                .into(ivPoster)
+
+            val orientation = context.resources.configuration.orientation
+            if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+                Glide
+                    .with(context)
+                    .load(movie.posterImageUrl)
+                    .placeholder(R.drawable.camera)
+                    .into(ivPoster)
+            } else {
+                Glide
+                    .with(context)
+                    .load(movie.backdropImageUrl)
+                    .placeholder(R.drawable.camera)
+                    .into(ivBackdrop)
+            }
         }
     }
 }

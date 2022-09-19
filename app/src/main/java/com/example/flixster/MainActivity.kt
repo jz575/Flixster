@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
                 try {
                     val movieJsonArray = json.jsonObject.getJSONArray("results")
                     movies.addAll(Movie.fromJsonArray(movieJsonArray))
+                    //hide the loading messages from both views
                     findViewById<TextView>(R.id.tvLoading).visibility = View.GONE
                     movieAdapter.notifyDataSetChanged()
                     Log.i(TAG, "Movie list $movies")

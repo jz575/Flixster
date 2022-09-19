@@ -6,8 +6,8 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/ivPoster"
-        android:layout_width="120dp"
+        android:id="@+id/ivBackdrop"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -24,10 +24,10 @@
         android:layout_marginEnd="8dp"
         android:ellipsize="end"
         android:maxLines="2"
-        android:text="Sample Text"
+        android:text="Title"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ivPoster"
+        app:layout_constraintStart_toEndOf="@+id/ivBackdrop"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -39,8 +39,8 @@
         android:layout_marginEnd="8dp"
         android:ellipsize="end"
         android:maxLines="5"
-        android:text="TextView"
+        android:text="Overview"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ivPoster"
+        app:layout_constraintStart_toEndOf="@+id/ivBackdrop"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>
