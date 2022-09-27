@@ -1,5 +1,7 @@
 package com.example.flixster
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
@@ -9,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
@@ -69,7 +72,10 @@ class MovieAdapter(private val context: Context, private val movies: List<Movie>
             //2. use that information with an intent to get to the next activity/screen
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra(MOVIE_EXTRA, movie)
-            context.startActivity(intent)
+            val activity: Activity = context as Activity
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, tvTitle, "title")
+            context.startActivity(intent, options.toBundle()
+            )
         }
     }
 }
