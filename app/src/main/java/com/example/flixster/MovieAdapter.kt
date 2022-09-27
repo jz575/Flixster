@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 const val MOVIE_EXTRA = "MOVIE_EXTRA"
 class MovieAdapter(private val context: Context, private val movies: List<Movie>)
@@ -55,12 +56,14 @@ class MovieAdapter(private val context: Context, private val movies: List<Movie>
                     .with(context)
                     .load(movie.posterImageUrl)
                     .placeholder(R.drawable.camera)
+                    .transform(RoundedCorners(30))
                     .into(ivPoster)
             } else {
                 Glide
                     .with(context)
                     .load(movie.backdropImageUrl)
                     .placeholder(R.drawable.camera)
+                    .transform(RoundedCorners(30))
                     .into(ivBackdrop)
             }
         }
